@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
+#import "SecondViewController.h"
 @implementation AppDelegate
+
+@synthesize window = _window;
+@synthesize navigationController;
+@synthesize viewController;
+@synthesize secondViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -16,6 +22,16 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.viewController = [[ViewController alloc] initWithNibName:nil bundle:NULL];
+    [self.window addSubview:self.viewController.view];
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    
+    [self.window addSubview:self.navigationController.view];
+    
+    self.secondViewController = [[SecondViewController alloc] initWithNibName:nil bundle:NULL];
+
     return YES;
 }
 
